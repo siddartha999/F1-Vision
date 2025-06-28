@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ferrari-bg-theme: oklch(63.7% 0.237 25.331);
+}
+
 html,:host {
   font-family: calibre,calibre-fallback,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
   font-size: 18px;
@@ -9,6 +13,8 @@ body {
   overflow: hidden;
   
 }
+
+
 
 #root {
   width: 100%;
