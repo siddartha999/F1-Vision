@@ -3,7 +3,7 @@ import { DRIVERS } from "../../data/drivers";
 const DriverSummary = () => {
     const driver = DRIVERS[0];
     return (
-        <div id="driver-summary" className="relative left-[20%] flex flex-wrap gap-4 lg:justify-between lg:w-[60%]">
+        <div id="driver-summary" className="flex flex-wrap gap-4 lg:justify-between lg:w-[60%]">
             <div id="career-summary" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="number">
