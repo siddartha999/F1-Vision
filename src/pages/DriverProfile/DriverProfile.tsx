@@ -1,11 +1,12 @@
 import { BaseSyntheticEvent, JSX, useState } from "react";
 import { DRIVERS } from "../../data/drivers";
-import DriverSummary from "./DriverSummary";
+import DriverOverview from "./DriverOverview";
 import LewisHamiltonImage from "../../assets/drivers/lewis-hamilton.png";
 import FerrariImage from "../../assets/constructors/Ferrari.png";
 import MercedesImage from "../../assets/constructors/Mercedes.png";
 import MclarenImage from "../../assets/constructors/Mclaren.png";
 import { DRIVER_PROFILE_NAVIGATION_ITEMS } from "./constants";
+import DriverBio from "./DriverBio";
 
 /**
  * Driver profile page.
@@ -22,11 +23,15 @@ const DriverProfile = (): JSX.Element => {
         setActiveNavItem(navItemClicked);
     };
 
-    const activeNavItemBg = (navItem: string) => {
-        if (navItem === activeNavItem) {
-            return `bg-blue-500`;
+    /**
+     * Renders the current active navigation item's content.
+     */
+    const renderDriverNavContent = () => {
+        switch(activeNavItem) {
+            case DRIVER_PROFILE_NAVIGATION_ITEMS.OVERVIEW: return <DriverOverview />;
+            case DRIVER_PROFILE_NAVIGATION_ITEMS.BIO: return <DriverBio />;
+            default: return <></>;
         }
-        return `bg-gray-600`;
     }
 
     return (
@@ -52,13 +57,17 @@ const DriverProfile = (): JSX.Element => {
 
              <div className="grid grid-cols-4 w-[80%] lg:w-[60%] text-xl mt-4 text-center" onClick={handleNavItemClick}>
                 {
-                    Object.values(DRIVER_PROFILE_NAVIGATION_ITEMS).map((item) => (
-                        <p id={item} className={`rounded-xl w-[10rem] cursor-pointer p-1 ${activeNavItemBg(item)}`}>{item}</p>
-                    ))
+                    Object.values(DRIVER_PROFILE_NAVIGATION_ITEMS).map((item) => {
+                        const isNavItemActive: boolean = item === activeNavItem;
+                        return  (
+                            <p id={item} className={`rounded-xl w-[10rem] cursor-pointer p-1 
+                                ${isNavItemActive ? `bg-blue-500 hover:bg-blue-600` : `bg-gray-500 hover:bg-gray-600`}`}>{item}</p>
+                        )
+                    })
                 }
             </div>
 
-            <DriverSummary />
+            {renderDriverNavContent()}
             
         </div>
     );

@@ -1,10 +1,10 @@
 import { DRIVERS } from "../../data/drivers";
 
-const DriverSummary = () => {
+const DriverOverview = () => {
     const driver = DRIVERS[0];
     return (
-        <div id="driver-summary" className="flex flex-wrap gap-4 lg:justify-between lg:w-[60%]">
-            <div id="career-summary" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+        <div id="driver-overview" className="flex flex-wrap gap-4 lg:justify-between lg:w-[60%]">
+            <div id="career-overview" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="number">
                         <p className="text-xl font-semibold">{driver.number}</p>
@@ -33,7 +33,7 @@ const DriverSummary = () => {
                 </div>
             </div>
         
-            <div id="race-summary" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+            <div id="race-overview" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="races">
                         <p className="text-xl font-semibold">{driver.grandPrixStats.races}</p>
@@ -66,4 +66,4 @@ const DriverSummary = () => {
     );
 };
 
-export default DriverSummary;
+export default DriverOverview;
