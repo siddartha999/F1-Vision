@@ -1,7 +1,25 @@
 import { DRIVERS } from "../../data/drivers";
 
+interface ICircuit {
+    gp: string;
+    races: string;
+    wins: string;
+    poles: string;
+    fastestLaps: string;
+    podiums: string;
+    points: string;
+    lapsLed: string;
+    kmsLed: string;
+}
+
 const DriverOverview = () => {
     const driver = DRIVERS[0];
+
+    const topFiveCircuitsByWins = (ciruits: ICircuit[]) => {
+        ciruits = ciruits.sort((a, b) => Number(b.wins) - Number(a.wins));
+        return ciruits.slice(0, 5);
+    }
+
     return (
         <div id="driver-overview" className="flex flex-wrap gap-4 lg:justify-between lg:w-[60%]">
             <div id="career-overview" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
@@ -59,6 +77,28 @@ const DriverOverview = () => {
                         <p className="text-xl font-semibold">{driver.grandPrixStats.fastestLaps}</p>
                         <p className="mt-1">Fastest Laps</p>
                     </div>
+                </div>
+            </div>
+
+            <div id="circuits-overview" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+                <p className="font-bold text-xl mb-4">Top 5 Circuits by Wins</p>
+                <div id="" className='grid text-center gap-4 mt-4'>
+                    <div id="" className='grid grid-cols-6'>
+                        <p></p>
+                        <p className='col-span-3'>Circuit</p>
+                        <p>Wins</p>
+                        <p>%</p>
+                    </div>
+                    {
+                        topFiveCircuitsByWins(driver.grandPrixStats.circuits).map((circuit, index) => 
+                            <div className='grid grid-cols-6'>
+                                <p>{index + 1}</p>
+                                <p className='col-span-3 font-bold'>{circuit.gp}</p>
+                                <p>{circuit.wins}</p>
+                                <p>{((+circuit.wins / +circuit.races) * 100).toFixed(2)}</p>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
 
