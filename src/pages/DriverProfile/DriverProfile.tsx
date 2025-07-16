@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, JSX, useState } from "react";
+import { BaseSyntheticEvent, JSX, useContext, useState } from "react";
 import { DRIVERS } from "../../data/drivers";
 import DriverOverview from "./DriverOverview";
 import LewisHamiltonImage from "../../assets/drivers/Lewis.png";
@@ -7,12 +7,15 @@ import MercedesImage from "../../assets/constructors/Mercedes.png";
 import MclarenImage from "../../assets/constructors/Mclaren.png";
 import { DRIVER_PROFILE_NAVIGATION_ITEMS } from "./constants";
 import DriverBio from "./DriverBio";
+import ConstructorContext from "../../contexts/ConstructorContext";
+import { IConstructorContextProps } from "../../common/interfaces/context";
 
 /**
  * Driver profile page.
  */
 const DriverProfile = (): JSX.Element => {
     const driver = DRIVERS[0];
+    const constructorsContext: IConstructorContextProps | null = useContext(ConstructorContext);
     const [activeNavItem, setActiveNavItem] = useState(DRIVER_PROFILE_NAVIGATION_ITEMS.OVERVIEW.toString());
 
     /**
@@ -44,7 +47,7 @@ const DriverProfile = (): JSX.Element => {
                     <div id="name-section" className="flex flex-wrap gap-3 items-baseline">
                         <p id="name" className="text-2xl font-bold">{driver.firstName} {driver.lastName}</p>
                         <div className="rounded-2xl px-3 py-0.75 bg-white cursor-pointer">
-                            <p id="team" className="text-ferrari-bg-theme">{driver.currentTeamId}</p>
+                            <p id="team" className="text-ferrari-bg-theme">{constructorsContext?.getConstructorById(driver.currentTeamId)?.name}</p>
                         </div>
                     </div>
                      <div id="team-images" className="grid grid-cols-3 justify-items-center align-center self-end">

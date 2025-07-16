@@ -3,13 +3,13 @@ import { IDriver } from "../common/interfaces/driver";
 
 export const DRIVERS: IDriver[] = [
     {
-        id: "1",
+        id: "driver_1",
         firstName: "Lewis",
         lastName: "Hamilton",
         dob: "Jan 7, 1985",
         nationality: "Great Britain",
         isActive: true,
-        currentTeamId: "1",
+        currentTeamId: "team_1",
         number: "44",
         height: "5′9″",
         driverTitles: "7",
@@ -452,31 +452,31 @@ export const DRIVERS: IDriver[] = [
                 type: Titles.WDC,
                 details: [
                     {
-                        constructorId: "3",
+                        constructorId: "team_3",
                         year: "2008"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2014"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2015"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2017"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2018"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2019"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2020"
                     },
                 ]
@@ -485,35 +485,35 @@ export const DRIVERS: IDriver[] = [
                 type: Titles.WCC,
                 details: [
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2014"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2015"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2016"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2017"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2018"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2019"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2020"
                     },
                     {
-                        constructorId: "2",
+                        constructorId: "team_2",
                         year: "2021"
                     },
                 ]
