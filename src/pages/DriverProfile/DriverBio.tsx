@@ -5,7 +5,7 @@ const DriverBio = () => {
     
 
     return (
-        <div id="driver-bio" className="flex flex-wrap gap-4 lg:justify-between lg:w-[60%]">
+        <div id="driver-bio" className="flex flex-wrap gap-4 lg:justify-between">
             <div id="bio" className="rounded-2xl px-4 py-2 mt-10 bg-[rgb(32_33_36)] text-lg">
                 {
                     driver.bio.map(item => <p className="mt-2">{item}</p>)

@@ -15,14 +15,20 @@ interface ICircuit {
 const DriverOverview = () => {
     const driver = DRIVERS[0];
 
-    const topFiveCircuitsByWins = (ciruits: ICircuit[]) => {
+    const topFiveCircuitsByWins = (ciruits: ICircuit[]): ICircuit[] => {
         ciruits = ciruits.sort((a, b) => Number(b.wins) - Number(a.wins));
         return ciruits.slice(0, 5);
     }
 
+
+    const topFiveCircuitsByPoles = (ciruits: ICircuit[]): ICircuit[] => {
+        ciruits = ciruits.sort((a, b) => Number(b.poles) - Number(a.poles));
+        return ciruits.slice(0, 5);
+    }
+
     return (
-        <div id="driver-overview" className="flex flex-wrap gap-4 lg:justify-between lg:w-[60%]">
-            <div id="career-overview" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+        <div id="driver-overview" className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-4">
+            <div id="career-overview" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="number">
                         <p className="text-xl font-semibold">{driver.number}</p>
@@ -51,7 +57,7 @@ const DriverOverview = () => {
                 </div>
             </div>
         
-            <div id="race-overview" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+            <div id="race-overview" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="races">
                         <p className="text-xl font-semibold">{driver.grandPrixStats.races}</p>
@@ -80,7 +86,7 @@ const DriverOverview = () => {
                 </div>
             </div>
 
-            <div id="circuits-overview" className="w-[20rem] lg:w-[30rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+            <div id="circuits-by-wins" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
                 <p className="font-bold text-xl mb-4">Top 5 Circuits by Wins</p>
                 <div id="" className='grid text-center gap-4 mt-4'>
                     <div id="" className='grid grid-cols-6'>
@@ -96,6 +102,28 @@ const DriverOverview = () => {
                                 <p className='col-span-3 font-bold'>{circuit.gp}</p>
                                 <p>{circuit.wins}</p>
                                 <p>{((+circuit.wins / +circuit.races) * 100).toFixed(2)}</p>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+
+            <div id="circuits-by-poles" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+                <p className="font-bold text-xl mb-4">Top 5 Circuits by Poles</p>
+                <div id="" className='grid text-center gap-4 mt-4'>
+                    <div id="" className='grid grid-cols-6'>
+                        <p></p>
+                        <p className='col-span-3'>Circuit</p>
+                        <p>Poles</p>
+                        <p>%</p>
+                    </div>
+                    {
+                        topFiveCircuitsByPoles(driver.grandPrixStats.circuits).map((circuit, index) => 
+                            <div className='grid grid-cols-6'>
+                                <p>{index + 1}</p>
+                                <p className='col-span-3 font-bold'>{circuit.gp}</p>
+                                <p>{circuit.poles}</p>
+                                <p>{((+circuit.poles / +circuit.races) * 100).toFixed(2)}</p>
                             </div>
                         )
                     }

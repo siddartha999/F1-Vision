@@ -35,8 +35,8 @@ const DriverProfile = (): JSX.Element => {
     }
 
     return (
-        <div id="driver-profile" className="relative left-[20%] ">
-            <div id="intro" className="w-[80%] lg:w-[60%] h-[10rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme flex gap-4">
+        <div id="driver-profile" className="mx-auto w-[90%] xl:w-[60%]">
+            <div id="intro" className="h-[10rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme flex gap-4">
                 <div id="image" className="h-[2rem]">
                     <img src={LewisHamiltonImage} className="object-contain h-[8rem]" />
                 </div>
@@ -55,12 +55,12 @@ const DriverProfile = (): JSX.Element => {
                 </div>
             </div>
 
-             <div className="grid grid-cols-4 w-[80%] lg:w-[60%] text-xl mt-4 text-center" onClick={handleNavItemClick}>
+             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xl mt-4 text-center place-items-center" onClick={handleNavItemClick}>
                 {
                     Object.values(DRIVER_PROFILE_NAVIGATION_ITEMS).map((item) => {
                         const isNavItemActive: boolean = item === activeNavItem;
                         return  (
-                            <p id={item} className={`rounded-xl w-[10rem] cursor-pointer p-1 
+                            <p id={item} className={`rounded-xl w-[8rem] lg:w-[10rem] cursor-pointer p-1 
                                 ${isNavItemActive ? `bg-blue-500 hover:bg-blue-600` : `bg-gray-500 hover:bg-gray-600`}`}>{item}</p>
                         )
                     })
