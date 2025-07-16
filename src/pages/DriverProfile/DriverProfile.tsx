@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, JSX, useState } from "react";
 import { DRIVERS } from "../../data/drivers";
 import DriverOverview from "./DriverOverview";
-import LewisHamiltonImage from "../../assets/drivers/lewis-hamilton.png";
+import LewisHamiltonImage from "../../assets/drivers/Lewis.png";
 import FerrariImage from "../../assets/constructors/Ferrari.png";
 import MercedesImage from "../../assets/constructors/Mercedes.png";
 import MclarenImage from "../../assets/constructors/Mclaren.png";
@@ -44,7 +44,7 @@ const DriverProfile = (): JSX.Element => {
                     <div id="name-section" className="flex flex-wrap gap-3 items-baseline">
                         <p id="name" className="text-2xl font-bold">{driver.firstName} {driver.lastName}</p>
                         <div className="rounded-2xl px-3 py-0.75 bg-white cursor-pointer">
-                            <p id="team" className="text-ferrari-bg-theme">{driver.currentTeam}</p>
+                            <p id="team" className="text-ferrari-bg-theme">{driver.currentTeamId}</p>
                         </div>
                     </div>
                      <div id="team-images" className="grid grid-cols-3 justify-items-center align-center self-end">

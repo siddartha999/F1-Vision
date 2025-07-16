@@ -16,10 +16,10 @@ const DriverBio = () => {
                     <div id="titles-summary" className="grid grid-cols-1 p-4 rounded-2xl mt-10 bg-ferrari-bg-theme">
                             {
                                 driver.titles.map((obj) => {
-                                    const years = obj.detail.map(item => item.year).join(", ");
+                                    const years = obj.details.map(item => item.year).join(", ");
                                     return (
                                         <div className="not-first:mt-4">
-                                            <p className="font-semibold text-xl">{obj.detail.length}x {obj.type}</p>
+                                            <p className="font-semibold text-xl">{obj.details.length}x {obj.type}</p>
                                             <p>{years}</p>
                                         </div>
                                     )

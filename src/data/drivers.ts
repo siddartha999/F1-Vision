@@ -1,15 +1,19 @@
-export const DRIVERS = [
+import { Titles } from "../common/interfaces/awards";
+import { IDriver } from "../common/interfaces/driver";
+
+export const DRIVERS: IDriver[] = [
     {
+        id: "1",
         firstName: "Lewis",
         lastName: "Hamilton",
         dob: "Jan 7, 1985",
         nationality: "Great Britain",
         isActive: true,
-        currentTeam: "Ferrari",
+        currentTeamId: "1",
         number: "44",
         height: "5′9″",
-        driverTitles: "7x",
-        constructorTitles: "8x",
+        driverTitles: "7",
+        constructorTitles: "8",
         points: "4941.5",
         grandPrixStats: {
             wins: "105",
@@ -17,11 +21,6 @@ export const DRIVERS = [
             races: "366",
             podiums: "202",
             fastestLaps: "68",
-            positionFinished: {
-                first: "202",
-                second: "57",
-                third: "40"
-            },
             circuits: [
                 {
                     "gp": "Austin",
@@ -443,92 +442,78 @@ export const DRIVERS = [
                 },
             ]
         },
-        sprintStats: {
-            wins: "1",
-            poles: "2",
-        },
-        teams: [
-            {
-                name: "Ferrari_id"
-            },
-            {
-                name: "Mercedes_id"
-            },
-            {
-                name: "Mclaren_id"
-            },
-        ],
+        teamsIds: ["1", "2", "3"],
         bio: [
             `Sir Lewis Carl Davidson Hamilton(born 7 January 1985) is a British racing driver who competes in Formula One for Ferrari. Hamilton has won a joint-record seven Formula One World Drivers' Championship titles—tied with Michael Schumacher—and holds the records for most wins (105), pole positions (104), and podium finishes (202), among others.`,
             `Hamilton has been credited with furthering Formula One's global following by appealing to a broader audience outside the sport, in part due to his high-profile lifestyle, amongst his environmental and social activism. He has also become a prominent advocate in support of racial justice and increased diversity in motorsport. Hamilton was listed in the 2020 issue of Time as one of the 100 most influential people globally, and was knighted in the 2021 New Year Honours.`
         ],
         titles: [
             {
-                type: "WDC",
-                detail: [
+                type: Titles.WDC,
+                details: [
                     {
-                        constructor: "Mclaren",
+                        constructorId: "3",
                         year: "2008"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2014"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2015"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2017"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2018"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2019"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2020"
                     },
                 ]
             },
             {
-                type: "WCC",
-                detail: [
+                type: Titles.WCC,
+                details: [
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2014"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2015"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2016"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2017"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2018"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2019"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2020"
                     },
                     {
-                        constructor: "Mercedes",
+                        constructorId: "2",
                         year: "2021"
                     },
                 ]

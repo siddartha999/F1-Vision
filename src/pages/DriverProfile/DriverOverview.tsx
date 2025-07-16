@@ -1,29 +1,18 @@
+import { IDriverAtCircuit } from "../../common/interfaces/driver";
 import { DRIVERS } from "../../data/drivers";
-
-interface ICircuit {
-    gp: string;
-    races: string;
-    wins: string;
-    poles: string;
-    fastestLaps: string;
-    podiums: string;
-    points: string;
-    lapsLed: string;
-    kmsLed: string;
-}
 
 const DriverOverview = () => {
     const driver = DRIVERS[0];
 
-    const topFiveCircuitsByWins = (ciruits: ICircuit[]): ICircuit[] => {
-        ciruits = ciruits.sort((a, b) => Number(b.wins) - Number(a.wins));
-        return ciruits.slice(0, 5);
+    const topFiveCircuitsByWins = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {
+        circuits = circuits.sort((a, b) => Number(b.wins) - Number(a.wins));
+        return circuits.slice(0, 5);
     }
 
 
-    const topFiveCircuitsByPoles = (ciruits: ICircuit[]): ICircuit[] => {
-        ciruits = ciruits.sort((a, b) => Number(b.poles) - Number(a.poles));
-        return ciruits.slice(0, 5);
+    const topFiveCircuitsByPoles = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {
+        circuits = circuits.sort((a, b) => Number(b.poles) - Number(a.poles));
+        return circuits.slice(0, 5);
     }
 
     return (
@@ -47,11 +36,11 @@ const DriverOverview = () => {
                         <p className="mt-1">Height</p>
                     </div>
                     <div id="driver-titles">
-                        <p className="text-xl font-semibold">{driver.driverTitles}</p>
+                        <p className="text-xl font-semibold">{driver.driverTitles}x</p>
                         <p className="mt-1">WDC</p>
                     </div>
                     <div id="constructor-titles">
-                        <p className="text-xl font-semibold">{driver.constructorTitles}</p>
+                        <p className="text-xl font-semibold">{driver.constructorTitles}x</p>
                         <p className="mt-1">WCC</p>
                     </div>
                 </div>
@@ -90,7 +79,7 @@ const DriverOverview = () => {
                 <p className="font-bold text-xl mb-4">Top 5 Circuits by Wins</p>
                 <div id="" className='grid text-center gap-4 mt-4'>
                     <div id="" className='grid grid-cols-6'>
-                        <p></p>
+                        <p>#</p>
                         <p className='col-span-3'>Circuit</p>
                         <p>Wins</p>
                         <p>%</p>
@@ -112,7 +101,7 @@ const DriverOverview = () => {
                 <p className="font-bold text-xl mb-4">Top 5 Circuits by Poles</p>
                 <div id="" className='grid text-center gap-4 mt-4'>
                     <div id="" className='grid grid-cols-6'>
-                        <p></p>
+                        <p>#</p>
                         <p className='col-span-3'>Circuit</p>
                         <p>Poles</p>
                         <p>%</p>
