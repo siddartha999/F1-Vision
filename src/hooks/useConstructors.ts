@@ -3,7 +3,7 @@ import { IConstructorContextProps } from "../common/interfaces/context";
 import { constructors as cs } from "../data/constructors";
 
 /**
- * One-stop location to manage constructors data.
+ * One-stop location to manage constructor data.
  */
 const useConstructors = (): IConstructorContextProps => {
     const constructors = cs;

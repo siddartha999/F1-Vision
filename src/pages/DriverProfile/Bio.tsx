@@ -1,6 +1,11 @@
+import { IDriver } from "../../common/interfaces/driver";
 import { DRIVERS } from "../../data/drivers";
 
-const DriverBio = () => {
+interface IBioProps {
+    driver: IDriver;
+};
+
+const Bio = (props: IBioProps) => {
     const driver = DRIVERS[0];
     
 
@@ -42,4 +47,4 @@ const DriverBio = () => {
     );
 };
 
-export default DriverBio;
+export default Bio;

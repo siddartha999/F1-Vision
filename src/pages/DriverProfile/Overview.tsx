@@ -1,8 +1,11 @@
-import { IDriverAtCircuit } from "../../common/interfaces/driver";
-import { DRIVERS } from "../../data/drivers";
+import { IDriver, IDriverAtCircuit } from "../../common/interfaces/driver";
 
-const DriverOverview = () => {
-    const driver = DRIVERS[0];
+interface IOverviewProps {
+    driver: IDriver;
+};
+
+const Overview = (props: IOverviewProps) => {
+    const driver = props.driver;
 
     const topFiveCircuitsByWins = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {
         circuits = circuits.sort((a, b) => Number(b.wins) - Number(a.wins));
@@ -123,4 +126,4 @@ const DriverOverview = () => {
     );
 };
 
-export default DriverOverview;
+export default Overview;

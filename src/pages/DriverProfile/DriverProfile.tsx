@@ -1,21 +1,27 @@
 import { BaseSyntheticEvent, JSX, useContext, useState } from "react";
-import { DRIVERS } from "../../data/drivers";
-import DriverOverview from "./DriverOverview";
+import Overview from "./Overview";
 import LewisHamiltonImage from "../../assets/drivers/Lewis.png";
 import FerrariImage from "../../assets/constructors/Ferrari.png";
 import MercedesImage from "../../assets/constructors/Mercedes.png";
 import MclarenImage from "../../assets/constructors/Mclaren.png";
 import { DRIVER_PROFILE_NAVIGATION_ITEMS } from "./constants";
-import DriverBio from "./DriverBio";
+import Bio from "./Bio";
 import ConstructorContext from "../../contexts/ConstructorContext";
-import { IConstructorContextProps } from "../../common/interfaces/context";
+import { IConstructorContextProps, IDriverContextProps } from "../../common/interfaces/context";
+import { useParams } from "react-router";
+import DriverContext from "../../contexts/DriverContext";
 
 /**
  * Driver profile page.
  */
 const DriverProfile = (): JSX.Element => {
-    const driver = DRIVERS[0];
     const constructorsContext: IConstructorContextProps | null = useContext(ConstructorContext);
+    const driversContext: IDriverContextProps | null = useContext(DriverContext);
+    const driverId = useParams().id ?? "";
+    const driver = driversContext?.getDriverById(driverId);
+    if (!driver) {
+        return <p>Invalid id</p>
+    }
     const [activeNavItem, setActiveNavItem] = useState(DRIVER_PROFILE_NAVIGATION_ITEMS.OVERVIEW.toString());
 
     /**
@@ -31,8 +37,8 @@ const DriverProfile = (): JSX.Element => {
      */
     const renderDriverNavContent = () => {
         switch(activeNavItem) {
-            case DRIVER_PROFILE_NAVIGATION_ITEMS.OVERVIEW: return <DriverOverview />;
-            case DRIVER_PROFILE_NAVIGATION_ITEMS.BIO: return <DriverBio />;
+            case DRIVER_PROFILE_NAVIGATION_ITEMS.OVERVIEW: return <Overview driver={driver} />;
+            case DRIVER_PROFILE_NAVIGATION_ITEMS.BIO: return <Bio driver={driver}/>;
             default: return <></>;
         }
     }
