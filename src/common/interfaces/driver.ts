@@ -1,4 +1,4 @@
-import { Titles } from "./awards";
+import { TITLES } from "./awards";
 
 export interface IDriver {
     id: string;
@@ -7,16 +7,18 @@ export interface IDriver {
     dob: string;
     nationality: string;
     isActive: boolean;
-    currentTeamId: string;
+    currentConstructorId: string;
     number?: string;
     height?: string;
     driverTitles: string;
     constructorTitles: string;
     points: string;
     bio: string[];
+    grandSlams: string;
     grandPrixStats: IDriverGPStats;
     teamsIds: string[];
     titles: IDriverTitles[];
+    carModelsDriven: IDriverCarModel[];
 }
 
 
@@ -26,6 +28,7 @@ export interface IDriverGPStats {
     races: string;
     podiums: string;
     fastestLaps: string;
+    retirements: string;
     circuits: IDriverAtCircuit[]
 }
 
@@ -43,11 +46,17 @@ export interface IDriverAtCircuit {
 }
 
 interface IDriverTitles {
-    type: Titles;
+    type: TITLES;
     details: 
         {
             constructorId: string,
             year: string
         }[]
     
+}
+
+export interface IDriverCarModel {
+    constructorId: string;
+    modelName: string;
+    year: string;
 }

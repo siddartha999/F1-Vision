@@ -16,8 +16,18 @@ const useConstructors = (): IConstructorContextProps => {
         return res && res.length > 0 ? res[0] : null;
     };
 
+    /**
+     * Returns tailwind theme for the given constructor id.
+     */
+    const getConstructorThemeById = (constructorId: string): string => {
+        const res = constructors.filter(cs => cs.id === constructorId)[0];
+        if (!res) return '';
+        return `bg-${res.name.toLocaleLowerCase()}-bg-theme`
+    };
+
     return {
-        getConstructorById: getConstructorById
+        getConstructorById: getConstructorById,
+        getConstructorThemeById: getConstructorThemeById
     };
 };
 

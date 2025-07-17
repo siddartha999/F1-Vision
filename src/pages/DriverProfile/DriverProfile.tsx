@@ -10,6 +10,7 @@ import ConstructorContext from "../../contexts/ConstructorContext";
 import { IConstructorContextProps, IDriverContextProps } from "../../common/interfaces/context";
 import { useParams } from "react-router";
 import DriverContext from "../../contexts/DriverContext";
+import Seasons from "./Seasons";
 
 /**
  * Driver profile page.
@@ -38,6 +39,7 @@ const DriverProfile = (): JSX.Element => {
     const renderDriverNavContent = () => {
         switch(activeNavItem) {
             case DRIVER_PROFILE_NAVIGATION_ITEMS.OVERVIEW: return <Overview driver={driver} />;
+            case DRIVER_PROFILE_NAVIGATION_ITEMS.SEASONS: return <Seasons driver={driver} />;
             case DRIVER_PROFILE_NAVIGATION_ITEMS.BIO: return <Bio driver={driver}/>;
             default: return <></>;
         }
@@ -53,7 +55,7 @@ const DriverProfile = (): JSX.Element => {
                     <div id="name-section" className="flex flex-wrap gap-3 items-baseline">
                         <p id="name" className="text-2xl font-bold">{driver.firstName} {driver.lastName}</p>
                         <div className="rounded-2xl px-3 py-0.75 bg-white cursor-pointer">
-                            <p id="team" className="text-ferrari-bg-theme">{constructorsContext?.getConstructorById(driver.currentTeamId)?.name}</p>
+                            <p id="team" className="text-ferrari-bg-theme">{constructorsContext?.getConstructorById(driver.currentConstructorId)?.name}</p>
                         </div>
                     </div>
                      <div id="team-images" className="grid grid-cols-3 justify-items-center align-center self-end">

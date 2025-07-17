@@ -1,4 +1,4 @@
-import { Titles } from "../common/interfaces/awards";
+import { TITLES } from "../common/interfaces/awards";
 import { IDriver } from "../common/interfaces/driver";
 
 export const DRIVERS: IDriver[] = [
@@ -9,18 +9,20 @@ export const DRIVERS: IDriver[] = [
         dob: "Jan 7, 1985",
         nationality: "Great Britain",
         isActive: true,
-        currentTeamId: "team_1",
+        currentConstructorId: "constructor_1",
         number: "44",
         height: "5′9″",
         driverTitles: "7",
         constructorTitles: "8",
-        points: "4941.5",
+        points: "4965.50",
+        grandSlams: "6",
         grandPrixStats: {
             wins: "105",
             poles: "104",
-            races: "366",
+            races: "368",
             podiums: "202",
             fastestLaps: "68",
+            retirements: "32",
             circuits: [
                 {
                     "gp": "Austin",
@@ -449,75 +451,177 @@ export const DRIVERS: IDriver[] = [
         ],
         titles: [
             {
-                type: Titles.WDC,
+                type: TITLES.WDC,
                 details: [
                     {
-                        constructorId: "team_3",
+                        constructorId: "constructor_3",
                         year: "2008"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2014"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2015"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2017"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2018"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2019"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2020"
                     },
                 ]
             },
             {
-                type: Titles.WCC,
+                type: TITLES.WCC,
                 details: [
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2014"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2015"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2016"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2017"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2018"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2019"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2020"
                     },
                     {
-                        constructorId: "team_2",
+                        constructorId: "constructor_2",
                         year: "2021"
                     },
                 ]
             }
+        ],
+        carModelsDriven: [
+            {
+                constructorId: "constructor_1",
+                modelName: "Ferrari SF-25",
+                year: "2025"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W15",
+                year: "2024"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W14",
+                year: "2023"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W13",
+                year: "2022"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W12",
+                year: "2021"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W11",
+                year: "2020"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W10",
+                year: "2019"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W09",
+                year: "2018"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W08",
+                year: "2017"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W07",
+                year: "2016"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W06",
+                year: "2015"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W05",
+                year: "2014"
+            },
+            {
+                constructorId: "constructor_2",
+                modelName: "Mercedes F1 W04",
+                year: "2013"
+            },
+            {
+                constructorId: "constructor_3",
+                modelName: "Mclaren MP4-27",
+                year: "2013"
+            },
+            {
+                constructorId: "constructor_3",
+                modelName: "Mclaren MP4-27",
+                year: "2012"
+            },
+            {
+                constructorId: "constructor_3",
+                modelName: "Mclaren MP4-26",
+                year: "2011"
+            },
+            {
+                constructorId: "constructor_3",
+                modelName: "Mclaren MP4-25",
+                year: "2010"
+            },
+            {
+                constructorId: "constructor_3",
+                modelName: "Mclaren MP4-24",
+                year: "2009"
+            },
+            {
+                constructorId: "constructor_3",
+                modelName: "Mclaren MP4-23",
+                year: "2008"
+            },
+            {
+                constructorId: "constructor_3",
+                modelName: "Mclaren MP4-22",
+                year: "2007"
+            },
         ]
     }
 ];

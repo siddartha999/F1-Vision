@@ -1,20 +1,20 @@
-import { IConstructor } from "../common/interfaces/constructor";
+import { CONSTRUCTOR, IConstructor } from "../common/interfaces/constructor";
 
 export const constructors: IConstructor[] = [
     {
-        id: "team_1",
-        name: "Ferrari"
+        id: "constructor_1",
+        name: CONSTRUCTOR.FERRARI
     },
     {
-        id: "team_2",
-        name: "Mercedes"
+        id: "constructor_2",
+        name: CONSTRUCTOR.MERCEDES
     },
     {
-        id: "team_3",
-        name: "Mclaren"
+        id: "constructor_3",
+        name: CONSTRUCTOR.MCLAREN
     },
     {
-        id: "team_4",
-        name: "RedBull"
+        id: "constructor_4",
+        name: CONSTRUCTOR.REDBULL
     }
 ];

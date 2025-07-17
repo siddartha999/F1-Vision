@@ -1,10 +1,11 @@
+import { JSX } from "react";
 import { IDriver, IDriverAtCircuit } from "../../common/interfaces/driver";
 
 interface IOverviewProps {
     driver: IDriver;
 };
 
-const Overview = (props: IOverviewProps) => {
+const Overview = (props: IOverviewProps): JSX.Element => {
     const driver = props.driver;
 
     const topFiveCircuitsByWins = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {

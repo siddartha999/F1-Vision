@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --color-mercedes-bg-theme: oklch(80% 0.15 180);
+  --color-mclaren-bg-theme: oklch(75% 0.18 50);
   --color-ferrari-bg-theme: oklch(63.7% 0.237 25.331);
 }
 
