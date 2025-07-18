@@ -1,12 +1,11 @@
 import { IDriver } from "../../common/interfaces/driver";
-import { DRIVERS } from "../../data/drivers";
 
 interface IBioProps {
     driver: IDriver;
 };
 
 const Bio = (props: IBioProps) => {
-    const driver = DRIVERS[0];
+    const driver = props.driver;
     
 
     return (

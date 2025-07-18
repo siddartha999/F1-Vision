@@ -623,5 +623,146 @@ export const DRIVERS: IDriver[] = [
                 year: "2007"
             },
         ]
+    },
+    {
+        id: "driver_2",
+        firstName: "Max",
+        lastName: "Verstappen",
+        dob: "Sep 30, 1997",
+        nationality: "Netherlands",
+        isActive: true,
+        currentConstructorId: "constructor_4",
+        number: "33",
+        height: "5′11″",
+        driverTitles: "4",
+        constructorTitles: "2",
+        points: "3188.50",
+        bio: ["Max Emilian Verstappen (Dutch pronunciation: [ˈmɑks fɛrˈstɑpə(n)]; born 30 September 1997) is a Dutch and Belgian racing driver who competes under the Dutch flag in Formula One for Red Bull Racing. Verstappen has won four Formula One World Drivers' Championship titles, which he won consecutively from 2021 to 2024 with Red Bull, and has won 65 Grands Prix across 11 seasons."],
+        grandSlams: "5",
+        teamsIds: ["constructor_4"],
+        grandPrixStats: {
+            races: "224",
+            wins: "65",
+            poles: "44",
+            podiums: "117",
+            fastestLaps: "34",
+            retirements: "33",
+            circuits: [
+                {
+                    gp: "Austin",
+                    races: "10",
+                    wins: "3",
+                    poles: "1",
+                    fastestLaps: "0",
+                    podiums: "6",
+                    points: "163",
+                    lapsLed: "103",
+                    kmsLed: "568"
+                }
+            ]
+        },
+        titles: [
+            {
+                type: TITLES.WDC,
+                details: [
+                    {
+                        constructorId: "contructor_4",
+                        year: "2021"
+                    },
+                    {
+                        constructorId: "contructor_4",
+                        year: "2022"
+                    },
+                    {
+                        constructorId: "contructor_4",
+                        year: "2023"
+                    },
+                    {
+                        constructorId: "contructor_4",
+                        year: "2024"
+                    },
+                ]
+            },
+            {
+                type: TITLES.WCC,
+                details: [
+                    {
+                        constructorId: "contructor_4",
+                        year: "2022"
+                    },
+                    {
+                        constructorId: "contructor_4",
+                        year: "2023"
+                    },
+                ]
+            }
+        ],
+        carModelsDriven: [
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB21",
+                year: "2025"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB20",
+                year: "2024"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB19",
+                year: "2023"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB18",
+                year: "2022"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB16B",
+                year: "2021"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB16",
+                year: "2020"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB15",
+                year: "2019"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB14",
+                year: "2018"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB13",
+                year: "2017"
+            },
+            {
+                constructorId: "constructor_4",
+                modelName: "Red Bull RB12",
+                year: "2016"
+            },
+            {
+                constructorId: "constructor_23",
+                modelName: "Toro Rosso STR11",
+                year: "2016"
+            },
+            {
+                constructorId: "constructor_23",
+                modelName: "Toro Rosso STR10",
+                year: "2015"
+            },
+            {
+                constructorId: "constructor_23",
+                modelName: "Toro Rosso STR9",
+                year: "2014"
+            },
+        ]
     }
 ];

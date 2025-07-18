@@ -2,8 +2,11 @@
 
 @theme static {
   --color-mercedes-bg-color: oklch(80% 0.15 180);
+  --color-mercedes-text-color: #18181b;
   --color-mclaren-bg-color: oklch(75% 0.18 50);
   --color-ferrari-bg-color: oklch(63.7% 0.237 25.331);
+  --color-redbullracing-bg-color: oklch(26.24% 0.052 263.15);
+  --color-redbullracing-text-color: oklch(86.83% 0.21 89.65);
 }
 
 html,:host {

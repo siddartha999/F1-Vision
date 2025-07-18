@@ -7,5 +7,5 @@ export enum CONSTRUCTOR {
     FERRARI = "Ferrari",
     MERCEDES = "Mercedes",
     MCLAREN = "Mclaren",
-    REDBULL = "RedBull"
+    REDBULL = "Red Bull Racing"
 }
