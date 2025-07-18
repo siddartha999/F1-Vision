@@ -22,7 +22,7 @@ const useConstructors = (): IConstructorContextProps => {
     const getConstructorThemeById = (constructorId: string): string => {
         const res = constructors.filter(cs => cs.id === constructorId)[0];
         if (!res) return '';
-        return `bg-${res.name.toLocaleLowerCase()}-bg-theme`
+        return `bg-[var(--color-${res.name.toLocaleLowerCase()}-bg-color)]`;
     };
 
     return {

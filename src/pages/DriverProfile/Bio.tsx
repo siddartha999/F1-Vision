@@ -18,7 +18,7 @@ const Bio = (props: IBioProps) => {
             </div>
             {
                 Array.isArray(driver.titles) && driver.titles?.length > 0 ?
-                    <div id="titles-summary" className="grid grid-cols-1 p-4 rounded-2xl mt-10 bg-ferrari-bg-theme">
+                    <div id="titles-summary" className="grid grid-cols-1 p-4 rounded-2xl mt-10 bg-ferrari-bg-color">
                             {
                                 driver.titles.map((obj) => {
                                     const years = obj.details.map(item => item.year).join(", ");

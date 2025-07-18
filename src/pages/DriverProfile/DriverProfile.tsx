@@ -47,7 +47,7 @@ const DriverProfile = (): JSX.Element => {
 
     return (
         <div id="driver-profile" className="mx-auto w-[90%] xl:w-[60%]">
-            <div id="intro" className="h-[10rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-theme flex gap-4">
+            <div id="intro" className="h-[10rem] rounded-2xl p-2 mt-10 bg-ferrari-bg-color flex gap-4">
                 <div id="image" className="h-[2rem]">
                     <img src={LewisHamiltonImage} className="object-contain h-[8rem]" />
                 </div>
@@ -55,7 +55,7 @@ const DriverProfile = (): JSX.Element => {
                     <div id="name-section" className="flex flex-wrap gap-3 items-baseline">
                         <p id="name" className="text-2xl font-bold">{driver.firstName} {driver.lastName}</p>
                         <div className="rounded-2xl px-3 py-0.75 bg-white cursor-pointer">
-                            <p id="team" className="text-ferrari-bg-theme">{constructorsContext?.getConstructorById(driver.currentConstructorId)?.name}</p>
+                            <p id="team" className="text-ferrari-bg-color">{constructorsContext?.getConstructorById(driver.currentConstructorId)?.name}</p>
                         </div>
                     </div>
                      <div id="team-images" className="grid grid-cols-3 justify-items-center align-center self-end">

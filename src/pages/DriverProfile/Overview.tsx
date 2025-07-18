@@ -21,7 +21,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
 
     return (
         <div id="driver-overview" className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-4">
-            <div id="career-overview" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+            <div id="career-overview" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-color">
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="number">
                         <p className="text-xl font-semibold">{driver.number}</p>
@@ -50,7 +50,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
         
-            <div id="race-overview" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+            <div id="race-overview" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-color">
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="races">
                         <p className="text-xl font-semibold">{driver.grandPrixStats.races}</p>
@@ -79,7 +79,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
 
-            <div id="circuits-by-wins" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+            <div id="circuits-by-wins" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-color">
                 <p className="font-bold text-xl mb-4">Top 5 Circuits by Wins</p>
                 <div id="" className='grid text-center gap-4 mt-4'>
                     <div id="" className='grid grid-cols-6'>
@@ -101,7 +101,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
 
-            <div id="circuits-by-poles" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-theme">
+            <div id="circuits-by-poles" className="rounded-2xl p-2 mt-10 bg-ferrari-bg-color">
                 <p className="font-bold text-xl mb-4">Top 5 Circuits by Poles</p>
                 <div id="" className='grid text-center gap-4 mt-4'>
                     <div id="" className='grid grid-cols-6'>
