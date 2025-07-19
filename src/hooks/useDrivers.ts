@@ -1,6 +1,6 @@
 import { IDriverContextProps } from "../common/interfaces/context";
 import { IDriver } from "../common/interfaces/driver";
-import { DRIVERS } from "../data/drivers";
+import DRIVERS from "../data/drivers/drivers";
 
 /**
  * One-stop location to manage driver data.
