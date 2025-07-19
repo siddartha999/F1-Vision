@@ -12,7 +12,7 @@ const App = () => {
   const driversContext = useDrivers();
 
   return (
-    <div id="main" className='bg-[rgb(21_21_22)] h-[inherit] overflow-auto'>
+    <div id="main" className='bg-[rgb(21_21_22)] h-[inherit] overflow-auto pb-[5rem]'>
         <div id="title" className='pt-6 text-center'>
           <p className='text-2xl text-white'>F1 Vision</p>
         </div>

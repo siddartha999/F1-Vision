@@ -10,13 +10,28 @@ const Overview = (props: IOverviewProps): JSX.Element => {
     const driver = props.driver;
 
     const topFiveCircuitsByWins = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {
-        circuits = circuits.sort((a, b) => Number(b.wins) - Number(a.wins));
+        circuits.sort((a, b) => Number(b.wins) - Number(a.wins));
         return circuits.slice(0, 5);
     }
 
+    const topFiveCircuitsByWinPercentage = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {
+        circuits.sort((a, b) => {
+            if (a.races === "0" || b.races === "0") return 0;
+            return Number(Number(b.wins) / Number(b.races)) - Number(Number(a.wins)) / Number(a.races);
+        });
+        return circuits.slice(0, 5);
+    }
 
     const topFiveCircuitsByPoles = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {
-        circuits = circuits.sort((a, b) => Number(b.poles) - Number(a.poles));
+        circuits.sort((a, b) => Number(b.poles) - Number(a.poles));
+        return circuits.slice(0, 5);
+    }
+
+    const topFiveCircuitsByPolePercentage = (circuits: IDriverAtCircuit[]): IDriverAtCircuit[] => {
+        circuits.sort((a, b) => {
+            if (a.races === "0" || b.races === "0") return 0;
+            return Number(Number(b.poles) / Number(b.races)) - Number(Number(a.poles) / Number(a.races));
+        });
         return circuits.slice(0, 5);
     }
 
@@ -113,6 +128,50 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                     </div>
                     {
                         topFiveCircuitsByPoles(driver.grandPrixStats.circuits).map((circuit, index) => 
+                            <div className='grid grid-cols-6'>
+                                <p>{index + 1}</p>
+                                <p className='col-span-3 font-bold'>{circuit.gp}</p>
+                                <p>{circuit.poles}</p>
+                                <p>{((+circuit.poles / +circuit.races) * 100).toFixed(2)}</p>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+
+            <div id="circuits-by-win-percentage" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorTheme}`}>
+                <p className="font-bold text-xl mb-4">Top 5 Circuits by Win %</p>
+                <div id="" className='grid text-center gap-4 mt-4'>
+                    <div id="" className='grid grid-cols-6'>
+                        <p>#</p>
+                        <p className='col-span-3'>Circuit</p>
+                        <p>Wins</p>
+                        <p>%</p>
+                    </div>
+                    {
+                        topFiveCircuitsByWinPercentage(driver.grandPrixStats.circuits).map((circuit, index) => 
+                            <div className='grid grid-cols-6'>
+                                <p>{index + 1}</p>
+                                <p className='col-span-3 font-bold'>{circuit.gp}</p>
+                                <p>{circuit.wins}</p>
+                                <p>{((+circuit.wins / +circuit.races) * 100).toFixed(2)}</p>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+
+            <div id="circuits-by-pole-percentage" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorTheme}`}>
+                <p className="font-bold text-xl mb-4">Top 5 Circuits by Pole %</p>
+                <div id="" className='grid text-center gap-4 mt-4'>
+                    <div id="" className='grid grid-cols-6'>
+                        <p>#</p>
+                        <p className='col-span-3'>Circuit</p>
+                        <p>Poles</p>
+                        <p>%</p>
+                    </div>
+                    {
+                        topFiveCircuitsByPolePercentage(driver.grandPrixStats.circuits).map((circuit, index) => 
                             <div className='grid grid-cols-6'>
                                 <p>{index + 1}</p>
                                 <p className='col-span-3 font-bold'>{circuit.gp}</p>
