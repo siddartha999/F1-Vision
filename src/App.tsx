@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router';
-import './App.css';
 import DriverProfile from './pages/DriverProfile/DriverProfile';
 import Summary from './components/Summary/Summary';
 import useConstructors from './hooks/useConstructors';

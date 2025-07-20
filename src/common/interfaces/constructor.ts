@@ -1,6 +1,6 @@
 export interface IConstructor {
     id: string;
-    name: string;
+    name: CONSTRUCTOR;
 }
 
 export enum CONSTRUCTOR {

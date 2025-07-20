@@ -1,4 +1,5 @@
-import { IConstructor } from "../common/interfaces/constructor";
+import { CONSTRUCTOR_STYLES } from "../common/constants/constructors";
+import { CONSTRUCTOR, IConstructor } from "../common/interfaces/constructor";
 import { IConstructorContextProps } from "../common/interfaces/context";
 import { constructors as cs } from "../data/constructors";
 
@@ -21,9 +22,8 @@ const useConstructors = (): IConstructorContextProps => {
      */
     const getConstructorThemeById = (constructorId: string): string => {
         const res = constructors.filter(cs => cs.id === constructorId)[0];
-        if (!res) return '';
-        return `bg-[var(--color-${res.name.split(" ").join("").toLocaleLowerCase()}-bg-color)] 
-            text-[var(--color-${res.name.split(" ").join("").toLocaleLowerCase()}-text-color)]`;
+        if (!res) return ``;
+        return CONSTRUCTOR_STYLES[res.name];
     };
 
     return {
