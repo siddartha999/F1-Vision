@@ -19,7 +19,7 @@ const App = () => {
           <DriverContext.Provider value={driversContext}>
             <Routes>
               <Route path="/" element={<Summary />}></Route>
-                <Route path="/driver/:id" element={<DriverProfile /> }> </Route>
+                <Route path="/driver/:fullName" element={<DriverProfile /> }> </Route>
             </Routes>
           </DriverContext.Provider>
         </ConstructorContext.Provider>

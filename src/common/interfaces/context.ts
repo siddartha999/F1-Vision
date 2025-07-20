@@ -9,4 +9,5 @@ export interface IConstructorContextProps {
 
 export interface IDriverContextProps {
     getDriverById: (driverId: string) => IDriver | null;
+    getDriverByFullName: (driverName: string) => IDriver | null;
 }

@@ -1,8 +1,5 @@
 import { BaseSyntheticEvent, JSX, useContext, useState } from "react";
 import Overview from "./Overview";
-import FerrariImage from "../../assets/constructors/Ferrari.png";
-import MercedesImage from "../../assets/constructors/Mercedes.png";
-import MclarenImage from "../../assets/constructors/Mclaren.png";
 import { DRIVER_PROFILE_NAVIGATION_ITEMS } from "./constants";
 import Bio from "./Bio";
 import ConstructorContext from "../../contexts/ConstructorContext";
@@ -17,8 +14,8 @@ import Seasons from "./Seasons";
 const DriverProfile = (): JSX.Element => {
     const constructorsContext: IConstructorContextProps | null = useContext(ConstructorContext);
     const driversContext: IDriverContextProps | null = useContext(DriverContext);
-    const driverId = useParams().id ?? "";
-    const driver = driversContext?.getDriverById(driverId);
+    const driverFullName = useParams().fullName ?? "";
+    const driver = driversContext?.getDriverByFullName(driverFullName);
     if (!driver) {
         return <p>Invalid id</p>
     }
