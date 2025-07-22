@@ -16,7 +16,7 @@ export interface IDriver {
     bio: string[];
     grandSlams: string;
     grandPrixStats: IDriverGPStats;
-    teamsIds: string[];
+    constructorIds: string[];
     titles: IDriverTitles[];
     carModelsDriven: IDriverCarModel[];
 }

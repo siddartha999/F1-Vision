@@ -9,3 +9,10 @@ export enum CONSTRUCTOR {
     MCLAREN = "Mclaren",
     REDBULL = "Red Bull Racing"
 }
+
+export interface IConstructorStyle {
+    bgPrimary: string;
+    textPrimary: string;
+    bgRounded?: string;
+    textRounded?: string;
+}

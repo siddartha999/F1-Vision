@@ -24,7 +24,7 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
                     </div>
                     {
                         driver.carModelsDriven.map((carModel, index) => 
-                            <div className={`grid grid-cols-6 rounded-2xl ${constructorsContext?.getConstructorThemeById(carModel.constructorId)} p-1`}>
+                            <div className={`grid grid-cols-6 rounded-2xl ${constructorsContext?.getConstructorStylesById(carModel.constructorId)} p-1`}>
                                 <p>{driver.carModelsDriven.length - index}</p>
                                 <p className='col-span-3 font-bold'>{constructorsContext?.getConstructorById(carModel.constructorId)?.name ?? ''}</p>
                                 <p>{carModel.modelName}</p>

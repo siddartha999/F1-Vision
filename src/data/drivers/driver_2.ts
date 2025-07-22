@@ -16,7 +16,7 @@ export const driver: IDriver = {
     points: "3188.50",
     bio: ["Max Emilian Verstappen (Dutch pronunciation: [ˈmɑks fɛrˈstɑpə(n)]; born 30 September 1997) is a Dutch and Belgian racing driver who competes under the Dutch flag in Formula One for Red Bull Racing. Verstappen has won four Formula One World Drivers' Championship titles, which he won consecutively from 2021 to 2024 with Red Bull, and has won 65 Grands Prix across 11 seasons."],
     grandSlams: "5",
-    teamsIds: ["constructor_4"],
+    constructorIds: ["constructor_4"],
     grandPrixStats: {
         races: "224",
         wins: "65",

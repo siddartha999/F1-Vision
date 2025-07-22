@@ -1,5 +1,5 @@
 import { CONSTRUCTOR_STYLES } from "../common/constants/constructors";
-import { CONSTRUCTOR, IConstructor } from "../common/interfaces/constructor";
+import { IConstructor, IConstructorStyle } from "../common/interfaces/constructor";
 import { IConstructorContextProps } from "../common/interfaces/context";
 import { constructors as cs } from "../data/constructors";
 
@@ -18,17 +18,17 @@ const useConstructors = (): IConstructorContextProps => {
     };
 
     /**
-     * Returns tailwind theme for the given constructor id.
+     * Returns tailwind styles for the given constructor id.
      */
-    const getConstructorThemeById = (constructorId: string): string => {
+    const getConstructorStylesById = (constructorId: string): IConstructorStyle | null => {
         const res = constructors.filter(cs => cs.id === constructorId)[0];
-        if (!res) return ``;
+        if (!res) return null;
         return CONSTRUCTOR_STYLES[res.name];
     };
 
     return {
         getConstructorById: getConstructorById,
-        getConstructorThemeById: getConstructorThemeById
+        getConstructorStylesById: getConstructorStylesById
     };
 };
 

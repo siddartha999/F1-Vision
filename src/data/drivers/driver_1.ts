@@ -443,7 +443,7 @@ export const driver: IDriver = {
             },
         ]
     },
-    teamsIds: ["1", "2", "3"],
+    constructorIds: ["constructor_1", "constructor_2", "constructor_3"],
     bio: [
         `Sir Lewis Carl Davidson Hamilton(born 7 January 1985) is a British racing driver who competes in Formula One for Ferrari. Hamilton has won a joint-record seven Formula One World Drivers' Championship titles—tied with Michael Schumacher—and holds the records for most wins (105), pole positions (104), and podium finishes (202), among others.`,
         `Hamilton has been credited with furthering Formula One's global following by appealing to a broader audience outside the sport, in part due to his high-profile lifestyle, amongst his environmental and social activism. He has also become a prominent advocate in support of racial justice and increased diversity in motorsport. Hamilton was listed in the 2020 issue of Time as one of the 100 most influential people globally, and was knighted in the 2021 New Year Honours.`
