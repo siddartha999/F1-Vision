@@ -43,7 +43,7 @@ const DriverProfile = (): JSX.Element => {
     }
 
     return (
-        <div id="driver-profile" className="mx-auto w-[90%] xl:w-[60%]">
+        <div id="driver-profile" className="mx-auto w-[90%]">
             <div id="intro" className={`h-[10rem] rounded-2xl p-2 mt-10 ${currentConstructorStyles?.bgPrimary} ${currentConstructorStyles?.textPrimary} flex gap-4`}>
                 <div id="image" className="h-[2rem]">
                     <img src={`/assets/drivers/${driver.firstName.toLowerCase()}_${driver.lastName?.toLowerCase()}.png`} className="object-contain h-[8rem]" />

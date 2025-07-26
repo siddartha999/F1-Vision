@@ -1,8 +1,9 @@
-import { JSX, useContext } from "react";
+import { BaseSyntheticEvent, JSX, useContext, useState } from "react";
 import { IDriver, IDriverSeasonStats } from "../../common/interfaces/driver";
 import { IConstructorContextProps } from "../../common/interfaces/context";
 import ConstructorContext from "../../contexts/ConstructorContext";
 import { IConstructorStyle } from "../../common/interfaces/constructor";
+import { CommonTerms } from "../../common/constants/common";
 
 interface ISeasonsProps {
     driver: IDriver;
@@ -12,41 +13,85 @@ interface ISeasonsProps {
 const Seasons = (props: ISeasonsProps): JSX.Element => {
     const driver = props.driver;
     const constructorsContext: IConstructorContextProps | null = useContext(ConstructorContext);
+    const [activeStatBySeason, setActiveStatBySeason] = useState<CommonTerms>(CommonTerms.WINS);
 
     const constructBarGraph = (seasons: IDriverSeasonStats[]) => {
-        const range = {
-            min: Number.MAX_SAFE_INTEGER,
-            max: Number.MIN_SAFE_INTEGER
+        const values = [...new Set(seasons.map(season => season[activeStatBySeason]))];
+        values.sort((a, b) => Number(a) - Number(b));
+
+        /**
+         * Determines the index of the given value in the sorted stats array
+         */
+        const getValueIndex = (val: string) => {
+            let leftIdx = 0, rightIdx = values.length - 1;
+            while (leftIdx <= rightIdx) {
+                const mid = leftIdx + Math.floor((rightIdx - leftIdx) / 2);
+                if (Number(values[mid]) == Number(val)) return mid + 1;
+                if (Number(values[mid]) > Number(val)) rightIdx = mid - 1;
+                else leftIdx = mid + 1;
+            }
+            return 1;
         };
-        for (let idx = 0; idx < seasons.length; idx++) {
-            const num = Number(seasons[idx].wins);
-            if (range.min > num) range.min = num;
-            if (range.max < num) range.max = num;
-        }
 
         return (
-            <div id="graph" className="flex items-end gap-6 ">
-                {
-                    seasons.map(season => {
-                        return (
-                            <div id="graph-item">
-                                <div style={{height: `${(Number(season.wins) + 0.1) * 2}rem`}} className={`bg-blue-700 w-[2rem] cursor-pointer`}>
+            <div id="graph" style={{height: `${values.length * 4}rem`}} className="flex gap-4 items-end">
+                <div id="y-axis" className={`mb-[2.5rem]`}>
+                    <div>
+                        {
+                            [...values].reverse().map(value => <div className="mb-[2rem] h-[2rem]">{value}</div>)
+                        }
+                    </div>
+                </div>
+                <div id="x-axis" className="flex items-end gap-6">
+                    {
+                        seasons.map(season => {
+                            return (
+                                <div id="graph-item">
+                                    <div style={{height: `${(getValueIndex(season[activeStatBySeason])) * 2 + ((2 * getValueIndex(season[activeStatBySeason]))) }rem`}}
+                                        className={`bg-[wheat] w-[2rem] cursor-pointer text-black text-center`}>
+                                            <p>{season[activeStatBySeason]}</p>
+                                    </div>
+                                    <div className={`text-center mt-[1rem] font-semibold h-[1.5rem]`}>
+                                        {season.year}
+                                    </div>
                                 </div>
-                                <div className={`text-center mt-2 font-semibold`}>
-                                    {season.year}
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
             </div>
         );
+    };
+
+    /**
+     * Updates the active 'Stats By Season' tab.
+     */
+    const handleStatsBySeasonTabSelect = (event: BaseSyntheticEvent) => {
+        setActiveStatBySeason(event.target.textContent);
+    };
+
+    /**
+     * Returns the relevant Tailwind classes for 'Stats By Season' tabs.
+     */
+    const statsBySeasonTabStyle = (tab: CommonTerms) => {
+        if (activeStatBySeason === tab) return `bg-gray-400 text-white`;
+        return `bg-black text-white`;
     };
 
     return (
         <div id="driver-seasons" className="grid grid-cols-1">
 
-            <div id="position-by-season-graph" className="rounded-2xl border-black border-4 p-4 mt-10 bg-[rgb(32_33_36)]">
+            <div id="stats-by-season-graph-container" className="rounded-2xl border-black border-4 p-4 mt-10 bg-[rgb(32_33_36)]">
+                <div id="header" className={`grid grid-cols-2 items-baseline pb-20`}>
+                    <p className="font-bold text-xl">Stats By Season</p>
+                    <div id="stats-by-season-tab-container" className="text-center grid grid-cols-5 gap-4">
+                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.WINS)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.WINS}</div>
+                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.POLES)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.POLES}</div>
+                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.PODIUMS)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.PODIUMS}</div>
+                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.RACES)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.RACES}</div>
+                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.POSITION)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.POSITION}</div>
+                    </div>
+                </div>
                 {
                     
                     constructBarGraph(driver.seasons)
