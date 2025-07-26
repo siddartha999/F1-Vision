@@ -34,7 +34,7 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
         };
 
         return (
-            <div id="graph" style={{height: `${values.length * 4}rem`}} className="flex gap-4 items-end">
+            <div id="graph" className="flex gap-4 items-end h-[40rem] w-fit mx-auto">
                 <div id="y-axis" className={`mb-[2.5rem]`}>
                     <div>
                         {
@@ -46,10 +46,12 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
                     {
                         seasons.map(season => {
                             return (
-                                <div id="graph-item">
+                                <div id="graph-item" className="group relative">
                                     <div style={{height: `${(getValueIndex(season[activeStatBySeason])) * 2 + ((2 * getValueIndex(season[activeStatBySeason]))) }rem`}}
-                                        className={`bg-[wheat] w-[2rem] cursor-pointer text-black text-center`}>
-                                            <p>{season[activeStatBySeason]}</p>
+                                        className={`bg-[wheat] w-[2rem] cursor-pointer text-black text-center hover:bg-[tan]`}>
+                                            <div className="invisible group-hover:visible absolute -top-12 bg-black text-white text-lg rounded w-[2rem]">
+                                                <p className="text-center">{season[activeStatBySeason]}</p>
+                                            </div>
                                     </div>
                                     <div className={`text-center mt-[1rem] font-semibold h-[1.5rem]`}>
                                         {season.year}
