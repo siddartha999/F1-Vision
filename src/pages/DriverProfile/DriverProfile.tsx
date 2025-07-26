@@ -36,7 +36,7 @@ const DriverProfile = (): JSX.Element => {
     const renderDriverNavContent = () => {
         switch(activeNavItem) {
             case DRIVER_PROFILE_NAVIGATION_ITEMS.OVERVIEW: return <Overview driver={driver} currentConstructorStyles={currentConstructorStyles} />;
-            case DRIVER_PROFILE_NAVIGATION_ITEMS.SEASONS: return <Seasons driver={driver} />;
+            case DRIVER_PROFILE_NAVIGATION_ITEMS.SEASONS: return <Seasons driver={driver} currentConstructorStyles={currentConstructorStyles}/>;
             case DRIVER_PROFILE_NAVIGATION_ITEMS.BIO: return <Bio driver={driver}/>;
             default: return <></>;
         }

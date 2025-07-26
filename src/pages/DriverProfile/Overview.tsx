@@ -88,7 +88,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
 
     return (
         <div id="driver-overview" className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-4">
-            <div id="career-overview" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
+            <div id="career-overview" className={`rounded-2xl border-2 p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="number">
                         <p className="text-xl font-semibold">{driver.number}</p>
@@ -117,7 +117,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
         
-            <div id="race-overview" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
+            <div id="race-overview" className={`rounded-2xl border-2 p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
                 <div className="grid grid-rows-2 grid-cols-3 gap-6 justify-items-center text-center">
                     <div id="races">
                         <p className="text-xl font-semibold">{driver.grandPrixStats.races}</p>
@@ -146,7 +146,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
 
-            <div id="circuits-by-wins" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
+            <div id="circuits-by-wins" className={`rounded-2xl border-2 p-4 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
                 <div className="grid grid-cols-2 mb-4">
                     <p className="font-bold text-xl">Top 5 Circuits by Wins</p>
                     <div className="grid grid-cols-5 gap-4 text-center">
@@ -179,7 +179,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
 
-            <div id="circuits-by-poles" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
+            <div id="circuits-by-poles" className={`rounded-2xl border-2 p-4 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
                 <div className="grid grid-cols-2 mb-4">
                     <p className="font-bold text-xl">Top 5 Circuits by Poles</p>
                     <div className="grid grid-cols-5 gap-4 text-center">
@@ -212,7 +212,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
 
-            <div id="circuits-by-win-percentage" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
+            <div id="circuits-by-win-percentage" className={`rounded-2xl border-2 p-4 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
                 <div className="grid grid-cols-2 mb-4">
                     <p className="font-bold text-xl">Top 5 Circuits by Win %</p>
                     <div className="grid grid-cols-5 gap-4 text-center">
@@ -245,7 +245,7 @@ const Overview = (props: IOverviewProps): JSX.Element => {
                 </div>
             </div>
 
-            <div id="circuits-by-pole-percentage" className={`rounded-2xl p-2 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
+            <div id="circuits-by-pole-percentage" className={`rounded-2xl border-2 p-4 mt-10 ${props.currentConstructorStyles?.bgPrimary} ${props.currentConstructorStyles?.textPrimary}`}>
                 <div className="grid grid-cols-2 mb-4">
                     <p className="font-bold text-xl">Top 5 Circuits by Pole %</p>
                     <div className="grid grid-cols-5 gap-4 text-center">
