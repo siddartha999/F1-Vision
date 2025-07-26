@@ -19,6 +19,7 @@ export interface IDriver {
     constructorIds: string[];
     titles: IDriverTitles[];
     carModelsDriven: IDriverCarModel[];
+    seasons: IDriverSeasonStats[];
 }
 
 
@@ -59,4 +60,21 @@ export interface IDriverCarModel {
     constructorId: string;
     modelName: string;
     year: string;
+}
+
+export interface IDriverSeasonStats {
+    year: string;
+    constructorId: string;
+    engineId: string;
+    position: string;
+    races: string;
+    wins: string;
+    poles: string;
+    fastestLaps: string;
+    podiums: string;
+    points: string;
+    lapsLed: string;
+    kmsLed: string;
+    totalLaps: string;
+    totalKms: string;
 }
