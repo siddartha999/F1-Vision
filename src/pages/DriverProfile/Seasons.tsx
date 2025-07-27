@@ -4,6 +4,7 @@ import { IConstructorContextProps } from "../../common/interfaces/context";
 import ConstructorContext from "../../contexts/ConstructorContext";
 import { IConstructorStyle } from "../../common/interfaces/constructor";
 import { CommonTerms } from "../../common/constants/common";
+import { capitalizeFirstLetter } from "../../common/utils/Utils";
 
 interface ISeasonsProps {
     driver: IDriver;
@@ -70,50 +71,57 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
         };
 
         return (
-            <div id="graph" className="flex gap-4 items-end h-[40rem] w-fit mx-auto">
-                <div id="y-axis" className={`mb-[2.5rem]`}>
-                    <div>
+            <div id="bar-graph-container" className="grid items-start xl:grid-rows-1 xl:grid-cols-6 w-fit mx-auto text-sm xl:text-lg pb-[1rem]">
+                <div id="graph" className="lg:col-span-5 flex gap-2 lg:gap-4 xl:gap-6">
+                    <div id="y-axis" className={`mb-[2.5rem]`}>
+                        <div>
+                            {
+                                [...values].reverse().map(value => <div className="mb-[2rem] h-[2rem]">{value}</div>)
+                            }
+                        </div>
+                    </div>
+                    <div id="x-axis" className="flex items-end gap-0 md:gap-2 lg:gap-4 2xl:gap-6">
                         {
-                            [...values].reverse().map(value => <div className="mb-[2rem] h-[2rem]">{value}</div>)
+                            seasons.map(season => {
+                                return (
+                                    <div id="graph-item" className="group relative">
+                                        <div style={{height: `${(getValueIndex(season[activeStatBySeason])) * 2 + ((2 * getValueIndex(season[activeStatBySeason]))) }rem`}}
+                                            className={`${barStyle(season)} w-[0.25rem] md:w-[1rem] xl:w-[2rem] cursor-pointer text-black text-center`}>
+                                                <div className="invisible group-hover:visible absolute -top-12 bg-black text-white rounded w-[2rem]">
+                                                    <p className="text-center">{season[activeStatBySeason]}</p>
+                                                </div>
+                                        </div>
+                                        <div className={`text-center mt-[0.5rem] md:mt-[1rem] font-semibold h-[1.5rem] w-[1.25rem]`}>
+                                            <p className="transform rotate-90 xl:rotate-0 relative left-[-0.25rem]">{season.year}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })
                         }
                     </div>
                 </div>
-                <div id="x-axis" className="flex items-end gap-6">
-                    {
-                        seasons.map(season => {
-                            return (
-                                <div id="graph-item" className="group relative">
-                                    <div style={{height: `${(getValueIndex(season[activeStatBySeason])) * 2 + ((2 * getValueIndex(season[activeStatBySeason]))) }rem`}}
-                                        className={`${barStyle(season)} w-[2rem] cursor-pointer text-black text-center`}>
-                                            <div className="invisible group-hover:visible absolute -top-12 bg-black text-white text-lg rounded w-[2rem]">
-                                                <p className="text-center">{season[activeStatBySeason]}</p>
-                                            </div>
-                                    </div>
-                                    <div className={`text-center mt-[1rem] font-semibold h-[1.5rem]`}>
-                                        {season.year}
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                <div id="division-by-constructor" className="self-center ml-[2.5rem] cursor-pointer">
-                    <div id="default-mode" className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.DEFAULT)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
-                        onClick={handleSelectActiveStatBySeasonBarGraphMode}>{BarGraphMode.DEFAULT}</div>
-                    <div id="constructor-mode" className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.BY_CONSTRUCTOR)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
-                        onClick={handleSelectActiveStatBySeasonBarGraphMode}>{BarGraphMode.BY_CONSTRUCTOR}</div>
-                    <div id="constructor-legends" className={`${activeStatBySeasonBarGraphMode === BarGraphMode.BY_CONSTRUCTOR ? 'visible' : 'invisible'}`}>
+                <div id="bar-graph-options" className="grid items-start gap-2 xl:gap-0 grid-rows-2 grid-cols-2 xl:grid-rows-3 xl:grid-cols-1 self-center mt-[3rem] xl:mt-0 ml-[0.25rem] xl:ml-[1.5rem] 2xl:ml-[3rem] cursor-pointer">
+                    <div id="default-mode" className={`text-center font-semibold`}
+                        onClick={handleSelectActiveStatBySeasonBarGraphMode}>
+                        <p className={`py-1 px-4 rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.DEFAULT)}`}>{BarGraphMode.DEFAULT}</p>
+                    </div>
+                    <div id="constructor-mode" className={`text-center font-semibold`}
+                        onClick={handleSelectActiveStatBySeasonBarGraphMode}>
+                        <p className={`py-1 px-4 rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.BY_CONSTRUCTOR)}`}>{BarGraphMode.BY_CONSTRUCTOR}</p>
+                    </div>
+                    <div id="constructor-legends" className={`flex flex-wrap gap-4 xl:block mt-[0.75rem] xl:mt-0
+                        ${activeStatBySeasonBarGraphMode === BarGraphMode.BY_CONSTRUCTOR ? 'visible' : 'invisible'}`}>
                         {
                             uniqueConstructorIds.map(uniqueConstructorId => {
                                 return (
                                     <div className="flex gap-2 rounded-2xl mb-2 ml-1.5">
                                         <div className={`${constructorsContext?.getConstructorStylesById(uniqueConstructorId)?.bgPrimary} px-4 py-2`}> </div>
-                                        <div className="text-lg ml-2">{constructorsContext?.getConstructorById(uniqueConstructorId)?.name}</div>
+                                        <div className="ml-2">{constructorsContext?.getConstructorById(uniqueConstructorId)?.name}</div>
                                     </div>
                                 )
                             })
                         }
-                    </div>    
+                    </div>
                 </div>
             </div>
         );
@@ -123,7 +131,7 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
      * Updates the active 'Stats By Season' widget's tab.
      */
     const handleStatsBySeasonTabSelect = (event: BaseSyntheticEvent) => {
-        setActiveStatBySeason(event.target.textContent);
+        setActiveStatBySeason(event.target.textContent.toLocaleLowerCase());
     };
 
     /**
@@ -138,14 +146,14 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
         <div id="driver-seasons" className="grid grid-cols-1">
 
             <div id="stats-by-season-graph-container" className="rounded-2xl border-black border-4 p-4 mt-10 bg-[rgb(32_33_36)]">
-                <div id="header" className={`grid grid-cols-2 items-baseline pb-20`}>
-                    <p className="font-bold text-xl">Stats By Season</p>
-                    <div id="stats-by-season-tab-container" className="text-center grid grid-cols-5 gap-4">
-                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.WINS)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.WINS}</div>
-                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.POLES)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.POLES}</div>
-                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.PODIUMS)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.PODIUMS}</div>
-                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.RACES)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.RACES}</div>
-                        <div className={`bg-black text-white rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.POSITION)}`} onClick={handleStatsBySeasonTabSelect}>{CommonTerms.POSITION}</div>
+                <div id="header" className={`flex justify-between gap-8 items-baseline pb-[10rem]`}>
+                    <p className="font-bold text-xl text-nowrap">Stats By Season</p>
+                    <div id="stats-by-season-tab-container" className="text-center grid grid-rows-5 md:grid-rows-3 md:grid-cols-2 lg:grid-rows-1 lg:grid-cols-5 gap-4">
+                        <div className={`bg-black text-white px-12 py-0.75 rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.WINS)}`} onClick={handleStatsBySeasonTabSelect}>{capitalizeFirstLetter(CommonTerms.WINS)}</div>
+                        <div className={`bg-black text-white px-12 py-0.75 rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.POLES)}`} onClick={handleStatsBySeasonTabSelect}>{capitalizeFirstLetter(CommonTerms.POLES)}</div>
+                        <div className={`bg-black text-white px-12 py-0.75 rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.PODIUMS)}`} onClick={handleStatsBySeasonTabSelect}>{capitalizeFirstLetter(CommonTerms.PODIUMS)}</div>
+                        <div className={`bg-black text-white px-12 py-0.75 rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.RACES)}`} onClick={handleStatsBySeasonTabSelect}>{capitalizeFirstLetter(CommonTerms.RACES)}</div>
+                        <div className={`bg-black text-white px-12 py-0.75 rounded-2xl cursor-pointer ${statsBySeasonTabStyle(CommonTerms.POSITION)}`} onClick={handleStatsBySeasonTabSelect}>{capitalizeFirstLetter(CommonTerms.POSITION)}</div>
                     </div>
                 </div>
                 {
