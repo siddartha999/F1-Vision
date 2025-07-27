@@ -15,4 +15,5 @@ export interface IConstructorStyle {
     textPrimary: string;
     bgRounded?: string;
     textRounded?: string;
+    bgHover?: string;
 }

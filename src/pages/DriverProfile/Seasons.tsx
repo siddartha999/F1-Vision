@@ -10,11 +10,35 @@ interface ISeasonsProps {
     currentConstructorStyles: IConstructorStyle | null;
 };
 
+const enum BarGraphMode {
+    DEFAULT = 'Default',
+    BY_CONSTRUCTOR = 'By Constructor'
+}
+
 const Seasons = (props: ISeasonsProps): JSX.Element => {
     const driver = props.driver;
     const constructorsContext: IConstructorContextProps | null = useContext(ConstructorContext);
     const [activeStatBySeason, setActiveStatBySeason] = useState<CommonTerms>(CommonTerms.WINS);
+    const [activeStatBySeasonBarGraphMode, setActiveStatBySeasonBarGraphMode] = useState<BarGraphMode>(BarGraphMode.DEFAULT);
 
+    /**
+     * Updates the BarGraph mode in the 'Stats By Season' widget.
+     */
+    const handleSelectActiveStatBySeasonBarGraphMode = (event: BaseSyntheticEvent) => {
+        setActiveStatBySeasonBarGraphMode(event.target.textContent);
+    };
+
+    /**
+     * Returns the relevant Tailwind classes for BarGraph mode in the 'Stats By Season'  widget.
+     */
+    const statsBySeasonBarGraphModeStyle = (mode: BarGraphMode) => {
+        if (activeStatBySeasonBarGraphMode === mode) return `bg-gray-400 text-white`;
+        return `bg-black text-white`;
+    };
+
+    /**
+     * Constructs a BarGraph in the 'Stats By Season' widget.
+     */
     const constructBarGraph = (seasons: IDriverSeasonStats[]) => {
         const values = [...new Set(seasons.map(season => season[activeStatBySeason]))];
         values.sort((a, b) => Number(a) - Number(b));
@@ -33,6 +57,16 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
             return 1;
         };
 
+        /**
+         * Returns the style of an individual Bar in BarGraph
+         */
+        const barStyle = (season: IDriverSeasonStats) => {
+            return `${activeStatBySeasonBarGraphMode === BarGraphMode.BY_CONSTRUCTOR ? 
+                        `${constructorsContext?.getConstructorStylesById(season.constructorId)?.bgPrimary}
+                        ${constructorsContext?.getConstructorStylesById(season.constructorId)?.bgHover}` 
+                        : `bg-[wheat] hover:bg-[tan]`}`
+        };
+
         return (
             <div id="graph" className="flex gap-4 items-end h-[40rem] w-fit mx-auto">
                 <div id="y-axis" className={`mb-[2.5rem]`}>
@@ -48,7 +82,7 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
                             return (
                                 <div id="graph-item" className="group relative">
                                     <div style={{height: `${(getValueIndex(season[activeStatBySeason])) * 2 + ((2 * getValueIndex(season[activeStatBySeason]))) }rem`}}
-                                        className={`bg-[wheat] w-[2rem] cursor-pointer text-black text-center hover:bg-[tan]`}>
+                                        className={`${barStyle(season)} w-[2rem] cursor-pointer text-black text-center`}>
                                             <div className="invisible group-hover:visible absolute -top-12 bg-black text-white text-lg rounded w-[2rem]">
                                                 <p className="text-center">{season[activeStatBySeason]}</p>
                                             </div>
@@ -61,19 +95,25 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
                         })
                     }
                 </div>
+                <div id="division-by-constructor" className="self-center ml-[2.5rem] cursor-pointer">
+                    <div className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.DEFAULT)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
+                        onClick={handleSelectActiveStatBySeasonBarGraphMode}>{BarGraphMode.DEFAULT}</div>
+                    <div className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.BY_CONSTRUCTOR)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
+                        onClick={handleSelectActiveStatBySeasonBarGraphMode}>{BarGraphMode.BY_CONSTRUCTOR}</div>
+                </div>
             </div>
         );
     };
 
     /**
-     * Updates the active 'Stats By Season' tab.
+     * Updates the active 'Stats By Season' widget's tab.
      */
     const handleStatsBySeasonTabSelect = (event: BaseSyntheticEvent) => {
         setActiveStatBySeason(event.target.textContent);
     };
 
     /**
-     * Returns the relevant Tailwind classes for 'Stats By Season' tabs.
+     * Returns the relevant Tailwind classes for 'Stats By Season' widget's tabs.
      */
     const statsBySeasonTabStyle = (tab: CommonTerms) => {
         if (activeStatBySeason === tab) return `bg-gray-400 text-white`;
