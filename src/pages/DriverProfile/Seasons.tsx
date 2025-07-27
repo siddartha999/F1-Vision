@@ -43,6 +43,8 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
         const values = [...new Set(seasons.map(season => season[activeStatBySeason]))];
         values.sort((a, b) => Number(a) - Number(b));
 
+        const uniqueConstructorIds = [...new Set(seasons.map(season => season.constructorId))];
+
         /**
          * Determines the index of the given value in the sorted stats array
          */
@@ -96,10 +98,22 @@ const Seasons = (props: ISeasonsProps): JSX.Element => {
                     }
                 </div>
                 <div id="division-by-constructor" className="self-center ml-[2.5rem] cursor-pointer">
-                    <div className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.DEFAULT)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
+                    <div id="default-mode" className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.DEFAULT)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
                         onClick={handleSelectActiveStatBySeasonBarGraphMode}>{BarGraphMode.DEFAULT}</div>
-                    <div className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.BY_CONSTRUCTOR)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
+                    <div id="constructor-mode" className={`rounded-2xl ${statsBySeasonBarGraphModeStyle(BarGraphMode.BY_CONSTRUCTOR)} text-lg text-center font-semibold py-1 px-4 mb-[1.5rem]`}
                         onClick={handleSelectActiveStatBySeasonBarGraphMode}>{BarGraphMode.BY_CONSTRUCTOR}</div>
+                    <div id="constructor-legends" className={`${activeStatBySeasonBarGraphMode === BarGraphMode.BY_CONSTRUCTOR ? 'visible' : 'invisible'}`}>
+                        {
+                            uniqueConstructorIds.map(uniqueConstructorId => {
+                                return (
+                                    <div className="flex gap-2 rounded-2xl mb-2 ml-1.5">
+                                        <div className={`${constructorsContext?.getConstructorStylesById(uniqueConstructorId)?.bgPrimary} px-4 py-2`}> </div>
+                                        <div className="text-lg ml-2">{constructorsContext?.getConstructorById(uniqueConstructorId)?.name}</div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>    
                 </div>
             </div>
         );
